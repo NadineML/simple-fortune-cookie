@@ -26,7 +26,6 @@ jobs:
 
   Build_push_frontend:
     runs-on: ubuntu-latest
-
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -38,3 +37,17 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           workdir: frontend
+
+  Build_push_backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Push backend image
+        uses: elgohr/Publish-Docker-Github-Action@v4
+        with:
+          name: nadineml/fortune-cookie-backend
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          workdir: backend
