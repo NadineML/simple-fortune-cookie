@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Go to frontend directory
-        run: bash ls
+        run: cd frontend
 
       - name: Build frontend image
         run: docker image build -t nadineml/fortune-cookie-frontend .
