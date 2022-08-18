@@ -32,9 +32,6 @@ jobs:
         run: docker pull nadineml/fortune-cookie-frontend:latest
       - name: Check out code
         uses: actions/checkout@v3
-
-     
-
       - name: Push frontend image
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
@@ -46,14 +43,11 @@ jobs:
   Build_push_backend:
     runs-on: ubuntu-latest
     steps:
-
       - name: Image backend pull
         run: docker pull nadineml/fortune-cookie-backend:latest
       - name: Check out code
         uses: actions/checkout@v3
-      
-      
-
+  
       - name: Push backend image
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
