@@ -35,5 +35,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: $docker_username/simple-fortune-cookie:1.0-${GIT_COMMIT::8} 
+          tags: nadineml/simple-fortune-cookie:1.0-${GIT_COMMIT::8} 
         
