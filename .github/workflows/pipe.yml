@@ -11,8 +11,18 @@ env: # Set the secret as an input
   docker_username: ${{ secrets.DOCKER_USERNAME }}
   docker_password: ${{ secrets.DOCKER_PASSWORD }}
   GIT_COMMIT: ${{ github.sha }}
-  
+
 jobs:
+  Run-npm-on-Ubuntu:
+    name: Run npm on Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm help
+
   Main-App-test:
     runs-on: ubuntu-latest
     steps:
@@ -24,16 +34,6 @@ jobs:
     - name: Run-App-Test
       run: go build -v frontend/main_test.go
   
-  Run-npm-on-Ubuntu:
-    name: Run npm on Ubuntu
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm help
-
   Docker-compose-test:
     runs-on: ubuntu-latest
     steps:
