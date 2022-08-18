@@ -30,9 +30,6 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
-      
-      - name: trial
-        run: cd /frontend
 
       - name: Push frontend image
         uses: elgohr/Publish-Docker-Github-Action@v4
@@ -40,3 +37,4 @@ jobs:
           name: nadineml/fortune-cookie-frontend
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          workdir: frontend
