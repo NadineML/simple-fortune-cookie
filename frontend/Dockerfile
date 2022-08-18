@@ -1,9 +1,14 @@
-FROM golang:latest
+FROM golang:latest AS builder
 WORKDIR /frontend
 ADD . .
 ENV PORT 8080
-RUN go mod tidy
-RUN go build *.go
-RUN go run *.go
+COPY . .
+RUN go mod tidy && go build -o /frontend
+#RUN go run *.go
+
+FROM ubuntu:latest AS main 
+COPY --from=builder /frontend /app
+#RUN go run *.go
 EXPOSE 8080
-CMD [ "/docker-frontend" ]
+WORKDIR /app
+CMD [ "/app/frontend" ]

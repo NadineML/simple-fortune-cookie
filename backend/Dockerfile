@@ -1,10 +1,12 @@
-FROM golang:latest
+FROM golang:latest AS builder
 WORKDIR /backend
 ADD . .
 ENV PORT 8080
-ENV REDIS_DNS 0.0.0.0
-RUN go mod tidy && go build *.go
-CMD start.sh
-RUN go run *.go
-EXPOSE 8080
-CMD [ "/docker-backend" ]
+COPY . .
+RUN go mod tidy && go build -o /backend
+
+FROM ubuntu:latest AS main 
+COPY --from=builder /backend /app
+#RUN go run *.go
+EXPOSE 6379
+CMD [ "/app/backend" ]

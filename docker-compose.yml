@@ -1,12 +1,27 @@
-version: "1.0"
-app:
+version: "3.1"
+services:
   redis:
-    image: "redis:alpine"
+    image: "redis:latest"
+    
+    restart: always
+
   backend:
-    build: /backend
-    ports:
-      - "8000:5000"
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    environment:
+      REDIS_DNS: redis
+    depends_on:
+      - redis
+
   frontend:
-    build: /frontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    environment:
+      BACKEND_DNS: backend
+    depends_on:
+      - redis
+      - backend
     ports:
-      - "8000:5000"
+      - "8000:8080"
