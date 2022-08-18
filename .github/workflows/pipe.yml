@@ -31,6 +31,9 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
+      - name: Image frontend pull
+        run: docker pull nadineml/fortune-cookie-frontend:latest
+
       - name: Push frontend image
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
@@ -44,6 +47,9 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+      
+      - name: Image backend pull
+        run: docker pull nadineml/fortune-cookie-backend:latest
 
       - name: Push backend image
         uses: elgohr/Publish-Docker-Github-Action@v4
