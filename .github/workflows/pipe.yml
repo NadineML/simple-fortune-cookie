@@ -27,7 +27,7 @@ jobs:
     name: Publishing images to DockerHub
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: Push backend and frontend images on DockerHub
-      uses: actions/checkout@v2
       run: chmod +x ci/push-docker.sh && ci/push-docker.sh
         
