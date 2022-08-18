@@ -16,7 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-
     - name: Set up Go
       uses: actions/setup-go@v2
       with:
@@ -24,11 +23,11 @@ jobs:
     - name: Run-App-Test
       run: go build -v frontend/main_test.go
   
-    Docker-compose-test:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - name: Build the stack
-          run: docker-compose up -d
-        - name: Test
-          run: docker run --network container:webapp-frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:5000/
+  Docker-compose-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the stack
+      run: docker-compose up -d
+    - name: Test
+      run: docker run --network container:webapp-frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:5000/
