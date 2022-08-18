@@ -1,0 +1,16 @@
+50419:C 17 Aug 2022 21:26:03.346 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+50419:C 17 Aug 2022 21:26:03.346 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=50419, just started
+50419:C 17 Aug 2022 21:26:03.346 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+50419:M 17 Aug 2022 21:26:03.348 * Running mode=standalone, port=6379.
+50419:M 17 Aug 2022 21:26:03.348 # Server initialized
+50419:M 17 Aug 2022 21:26:03.348 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+50419:M 17 Aug 2022 21:26:03.349 * Loading RDB produced by version 6.0.16
+50419:M 17 Aug 2022 21:26:03.349 * RDB age 36 seconds
+50419:M 17 Aug 2022 21:26:03.349 * RDB memory usage when created 0.77 Mb
+50419:M 17 Aug 2022 21:26:03.349 * DB loaded from disk: 0.000 seconds
+50419:M 17 Aug 2022 21:26:03.349 * Ready to accept connections
+50419:signal-handler (1660777230) Received SIGTERM scheduling shutdown...
+50419:M 17 Aug 2022 23:00:30.804 # User requested shutdown...
+50419:M 17 Aug 2022 23:00:30.804 * Saving the final RDB snapshot before exiting.
+50419:M 17 Aug 2022 23:00:30.813 * DB saved on disk
+50419:M 17 Aug 2022 23:00:30.813 # Redis is now ready to exit, bye bye...
