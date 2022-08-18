@@ -34,6 +34,9 @@ jobs:
       - name: Go to frontend directory
         run: cd frontend
 
+      - name: print 
+        run: ls
+
       - name: Build frontend image
         run: docker image build -t nadineml/fortune-cookie-frontend .
 
