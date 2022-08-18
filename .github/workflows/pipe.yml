@@ -11,7 +11,9 @@ env: # Set the secret as an input
   docker_username: ${{ secrets.DOCKER_USERNAME }}
   docker_password: ${{ secrets.DOCKER_PASSWORD }}
   GIT_COMMIT: ${{ github.sha }}
+
 jobs:
+
   Main-App-test:
     runs-on: ubuntu-latest
     steps:
@@ -22,7 +24,6 @@ jobs:
         go-version: 1.16
     - name: Run-App-Test
       run: go build -v frontend/main_test.go
- 
 
   Build_push_frontend:
     runs-on: ubuntu-latest

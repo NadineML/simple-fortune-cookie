@@ -15,7 +15,6 @@ services:
       - redis
 
   frontend:
-    image: my.image.name:rc2
     build:
       context: frontend
       dockerfile: Dockerfile
