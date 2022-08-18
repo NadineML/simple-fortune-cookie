@@ -23,15 +23,17 @@ jobs:
     - name: Run-App-Test
       run: go build -v frontend/main_test.go
   
-  Docker-compose-test:
+  build-and-push-latest:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the stack
-      run: docker-compose up -d
-    - name: Test redis
-      run: docker run --network container:redis appropriate/curl -s --retry 10 --retry-connrefused http://localhost:5000/
-    - name: Test backend
-      run: docker run --network container:backend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:5000/
-    - name: Test frontend
-      run: docker run --network container:frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:5000/
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ env.docker_username }}
+          password: ${{ env.docker_password }}
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: $docker_username/simple-fortune-cookie:1.0-${GIT_COMMIT::8} 
+        
