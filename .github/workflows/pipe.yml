@@ -24,12 +24,10 @@ jobs:
       run: go build -v frontend/main_test.go
  
   Docker-image:
-    name: Publishing image to DockerHub
+    name: Publishing images to DockerHub
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Compose docker
-      run: docker-compose up -d
-    - name: push docker
+    - name: Push backend and frontend images on DockerHub
       run: chmod +x ci/push-docker.sh && ci/push-docker.sh
         

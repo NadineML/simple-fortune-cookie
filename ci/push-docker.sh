@@ -1,4 +1,8 @@
 #!/bin/bash
-docker images --all
-docker simple-fortune-cookie_backend push "nadineml/fortune-cookie-backend:latest"
-docker simple-fortune-cookie_frontend push "nadineml/fortune-cookie-frontend:latest"
+cd /home/ubuntu/devops-academy-handins-public/simple-fortune-cookie/frontend
+docker build -t nadineml/fortune-cookie-frontend .
+docker push nadineml/fortune-cookie-frontend
+
+cd /home/ubuntu/devops-academy-handins-public/simple-fortune-cookie/backend
+docker build -t nadineml/fortune-cookie-backend .
+docker push nadineml/fortune-cookie-backend
