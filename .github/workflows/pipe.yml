@@ -23,17 +23,11 @@ jobs:
     - name: Run-App-Test
       run: go build -v frontend/main_test.go
   
-  build-and-push-latest:
+  Docker-image:
     runs-on: ubuntu-latest
     steps:
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ env.docker_username }}
-          password: ${{ env.docker_password }}
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: nadineml/simple-fortune-cookie:1.0-${GIT_COMMIT::8} 
+    - name: Compose docker
+      run: docker-compose up -d
+    - name: push docker
+      run: chmod +x ci/push-docker.sh && ci/push-docker.sh
         
