@@ -38,9 +38,12 @@ jobs:
         run: docker image build -t nadineml/fortune-cookie-frontend .
 
       - name: Push frontend image
-        uses: nadineml/Publish-Docker-Github-Action@2.14
+        uses: elgohr/Publish-Docker-Github-Action@v4
         with:
-          name: image
+          name: nadineml/fortune-cookie-frontend
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
+          - name: Publish Docker
+
         
