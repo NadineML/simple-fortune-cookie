@@ -43,7 +43,3 @@ jobs:
           name: nadineml/fortune-cookie-frontend
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
-          - name: Publish Docker
-
-        
