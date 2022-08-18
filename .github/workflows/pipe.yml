@@ -11,6 +11,7 @@ env: # Set the secret as an input
   docker_username: ${{ secrets.DOCKER_USERNAME }}
   docker_password: ${{ secrets.DOCKER_PASSWORD }}
   GIT_COMMIT: ${{ github.sha }}
+  
 jobs:
   Main-App-test:
     runs-on: ubuntu-latest
