@@ -31,7 +31,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
         with:
-          path: frontend
+          path: /frontend
 
       - name: Push frontend image
         uses: elgohr/Publish-Docker-Github-Action@v4
