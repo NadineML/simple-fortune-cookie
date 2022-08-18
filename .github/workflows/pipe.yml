@@ -31,7 +31,8 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
       
-      - run: cd /frontend
+      - name: trial
+        run: cd /frontend
 
       - name: Push frontend image
         uses: elgohr/Publish-Docker-Github-Action@v4
