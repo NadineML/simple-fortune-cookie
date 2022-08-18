@@ -9,6 +9,6 @@ RUN go mod tidy && go build -o /frontend
 FROM ubuntu:latest AS main 
 COPY --from=builder /frontend /app
 #RUN go run *.go
-EXPOSE 8080
+EXPOSE 6379
 WORKDIR /app
 CMD [ "/app/frontend" ]
