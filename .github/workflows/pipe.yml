@@ -22,22 +22,12 @@ jobs:
         go-version: 1.16
     - name: Run-App-Test
       run: go build -v frontend/main_test.go
-
-  
-  Clone-down:
-    name: Clone down repo
+ 
+  Docker-image:
+    name: Publishing image to DockerHub
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Upload Repo
-      uses: actions/upload-artifact@v2
-      with:
-        name: code
-        path: .
-  
-  Docker-image:
-    runs-on: ubuntu-latest
-    needs: Clone-down
     steps:
     - name: Compose docker
       run: docker-compose up -d
