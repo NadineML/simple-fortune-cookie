@@ -3,6 +3,7 @@ on:
   push:
     branches: 
     - "03-automation"
+    - "03-container-registry"
   pull_request:
     branches:
     - "main"
@@ -11,7 +12,7 @@ env: # Set the secret as an input
   docker_password: ${{ secrets.DOCKER_PASSWORD }}
   GIT_COMMIT: ${{ github.sha }}
 jobs:
-  Main-test:
+  Main-App-test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -20,7 +21,14 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: 1.16
-    - name: Run-Test
+    - name: Run-App-Test
       run: go build -v frontend/main_test.go
-
   
+    Docker compose test:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: Build the stack
+          run: docker-compose up -d
+        - name: Test
+          run: docker run --network container:webapp-frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:5000/
