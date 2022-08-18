@@ -1,0 +1,12 @@
+version: "1.0"
+app:
+  redis:
+    image: "redis:alpine"
+  backend:
+    build: /backend
+    ports:
+      - "8000:5000"
+  frontend:
+    build: /frontend
+    ports:
+      - "8000:5000"
