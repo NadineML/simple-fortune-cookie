@@ -28,7 +28,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    steps:
     - name: Compose docker
       run: docker-compose up -d
     - name: push docker
