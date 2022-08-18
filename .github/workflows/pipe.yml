@@ -24,7 +24,7 @@ jobs:
     - name: Run-App-Test
       run: go build -v frontend/main_test.go
   
-    Docker compose test:
+    Docker-compose-test:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
